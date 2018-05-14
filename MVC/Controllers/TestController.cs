@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MVC.Models;
+﻿using Core;
+using Facade;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVC.Controllers {
     
     public class TestController : Controller {
         
-        public string GetString() {
-            return "Hello world!";
-        }
-
         public ActionResult GetView() {
-            Employee emp = new Employee();
-            emp.FirstName = "Sukesh";
-            emp.LastName = "Maria";
-            emp.Salary = 1000;
-            return View("MyView", emp);
+            var emp = new Employee("Sukesh", "Maria", 20000);
+
+            var vmEmp = new EmployeeViewModel(emp, "Admin");
+            return View("MyView", vmEmp);
         }
     }
 }

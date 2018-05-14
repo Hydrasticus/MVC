@@ -1,4 +1,4 @@
-﻿@model Employee
+﻿@model Facade.EmployeeViewModel
 
 @{
     Layout = null;
@@ -12,18 +12,14 @@
     <title>MyView</title>
 </head>
 <body>
-<div>
-    <b>Employee Details</b><br/>
-    Employee Name: @Model.FirstName @Model.LastName<br/>
-    @if (Model.Salary > 15000) {
-        <span style="background-color: yellow">
-            Employee Salary: @Model.Salary.ToString("C")
+    Hello @Model.UserName
+    <hr/>
+    <div>
+        <b>Employee Details</b><br/>
+        Employee Name: @Model.EmployeeName<br/>
+        <span style="background-color: @Model.SalaryColor">
+            Employee Salary: @Model.Salary
         </span>
-    } else {
-        <span style="background-color: green">
-            Employee Salary: @Model.Salary.ToString("C")
-        </span>
-    }
-</div>
+    </div>
 </body>
 </html>
