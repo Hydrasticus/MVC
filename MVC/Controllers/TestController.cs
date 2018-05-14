@@ -13,10 +13,8 @@ namespace MVC.Controllers {
             Employee emp = new Employee();
             emp.FirstName = "Sukesh";
             emp.LastName = "Maria";
-            emp.Salary = 20000;
-
-            ViewBag.Employee = emp;
-            return View("MyView");
+            emp.Salary = 1000;
+            return View("MyView", emp);
         }
     }
 }
