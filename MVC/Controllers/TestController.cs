@@ -15,7 +15,7 @@ namespace MVC.Controllers {
             emp.LastName = "Maria";
             emp.Salary = 20000;
 
-            ViewData["Employee"] = emp;
+            ViewBag.Employee = emp;
             return View("MyView");
         }
     }
