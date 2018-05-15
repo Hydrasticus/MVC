@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create Employee";
+    <script src="~/js/Validations.js"></script>
     <script>
         function ResetForm() {
             document.getElementById("TxtFName").value = "";
@@ -21,9 +22,11 @@
             @Html.ValidationMessage("LastName")</p>
         <p>Salary: <input type="text" id="TxtSalary" name="Salary" value=""/>
             @Html.ValidationMessage("Salary")</p>
-        <input type="submit" name="BtnSubmit" value="Save Employee"/>
-        <input type="button" name="BtnReset" value="Reset" onclick="ResetForm()"/>
-        <input type="submit" name="BtnSubmit" value="Cancel"/>
+        <td colspan="2">
+            <input type="submit" name="BtnSubmit" value="Save Employee" onclick="return IsValid();"/>
+            <input type="submit" name="BtnSubmit" value="Cancel"/>
+            <input type="button" name="BtnReset" value="Reset" onclick="ResetForm()"/>
+        </td>
     </form>
 </div>
 </body>
