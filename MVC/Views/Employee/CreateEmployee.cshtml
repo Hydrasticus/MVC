@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Facade.CreateEmployeeViewModel
+
+@{
     ViewBag.Title = "Create Employee";
     <script>
         function ResetForm() {
@@ -17,7 +19,8 @@
             @Html.ValidationMessage("FirstName")</p>
         <p>Last Name: <input type="text" id="TxtLName" name="LastName" value=""/>
             @Html.ValidationMessage("LastName")</p>
-        <p>Salary: <input type="text" id="TxtSalary" name="Salary" value=""/></p>
+        <p>Salary: <input type="text" id="TxtSalary" name="Salary" value=""/>
+            @Html.ValidationMessage("Salary")</p>
         <input type="submit" name="BtnSubmit" value="Save Employee"/>
         <input type="button" name="BtnReset" value="Reset" onclick="ResetForm()"/>
         <input type="submit" name="BtnSubmit" value="Cancel"/>

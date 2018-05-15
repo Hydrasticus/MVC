@@ -29,24 +29,20 @@ namespace MVC.Controllers {
         }
 
         public ActionResult AddNew() {
-            return View("CreateEmployee");
+            return View("CreateEmployee", new CreateEmployeeViewModel());
         }
 
         public ActionResult SaveEmployee(Employee e, string BtnSubmit) {
-            switch (BtnSubmit) {
-                case "Save Employee":
-                    if (ModelState.IsValid) {
-                        Employees emp = new Employees();
-                        emp.Save(e, db);
-                        return RedirectToAction("Index");
-                    } else {
-                        return View("CreateEmployee");
-                    }
-                case "Cancel":
-                    return RedirectToAction("Index");
-            }
+            if (BtnSubmit != "Save Employee") return RedirectToAction("Index");
+            if (!ModelState.IsValid) return View("CreateEmployee");
 
-            return new EmptyResult();
+            return save(e);
+        }
+
+        private ActionResult save(Employee e) {
+            Employees emp = new Employees();
+            emp.Save(e, db);
+            return RedirectToAction("Index");
         }
     }
 }
