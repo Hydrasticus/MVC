@@ -3,6 +3,7 @@ using Core;
 using Facade;
 using Microsoft.AspNetCore.Mvc;
 using Infra;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers {
 
@@ -14,6 +15,7 @@ namespace MVC.Controllers {
             this.db = db;
         }
 
+        [Authorize]
         public ActionResult Index() {
             var model = new EmployeeListViewModel();
             var employees = Employees.Get(db);
@@ -28,6 +30,7 @@ namespace MVC.Controllers {
             return View("Index", model);
         }
 
+        [Authorize]
         public ActionResult AddNew() {
             return View("CreateEmployee", new CreateEmployeeViewModel());
         }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Infra;
+using Microsoft.AspNetCore.Http;
 
 namespace MVC {
     public class Startup {
@@ -18,19 +19,24 @@ namespace MVC {
             services.AddDbContext<SalesDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly("MVC")));
+
+            services.AddAuthentication("AuthScheme").AddCookie("AuthScheme",
+                options => { options.LoginPath = new PathString("/Authentication/Login"); });
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             } else {
                 app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes => {
                 routes.MapRoute(
