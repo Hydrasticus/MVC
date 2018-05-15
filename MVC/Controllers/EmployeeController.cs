@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core;
 using Facade;
 using Microsoft.AspNetCore.Mvc;
 using Infra;
@@ -29,6 +30,10 @@ namespace MVC.Controllers {
 
         public ActionResult AddNew() {
             return View("CreateEmployee");
+        }
+
+        public string SaveEmployee(Employee e) {
+            return e.FirstName + "|" + e.LastName + "|" + e.Salary;
         }
     }
 }
