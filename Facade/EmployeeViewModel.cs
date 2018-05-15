@@ -2,8 +2,9 @@
 
 namespace Facade {
 
+    //TODO: setName, setColor and setSalary to internal void
     public class EmployeeViewModel {
-
+        
         public EmployeeViewModel(Employee emp) {
             if (emp is null) return;
             setName(emp);
@@ -15,16 +16,16 @@ namespace Facade {
         public string Salary { get; set; } = 0.ToString("C");
         public string SalaryColor { get; private set; } = "red";
 
-        internal void setName(Employee e) {
+        public void setName(Employee e) {
             EmployeeName = e.FirstName + " " + e.LastName;
         }
 
-        internal void setColor(Employee e) {
+        public void setColor(Employee e) {
             if (!ReferenceEquals(null, e)) SalaryColor = e.Salary > 15000 ? "yellow" : "green";
             else SalaryColor = "red";
         }
 
-        internal void setSalary(Employee e) {
+        public void setSalary(Employee e) {
             Salary = e.Salary.ToString("C");
         }
     }

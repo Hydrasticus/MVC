@@ -35,9 +35,13 @@ namespace MVC.Controllers {
         public ActionResult SaveEmployee(Employee e, string BtnSubmit) {
             switch (BtnSubmit) {
                 case "Save Employee":
-                    Employees emp = new Employees();
-                    emp.Save(e, db);
-                    return RedirectToAction("Index");
+                    if (ModelState.IsValid) {
+                        Employees emp = new Employees();
+                        emp.Save(e, db);
+                        return RedirectToAction("Index");
+                    } else {
+                        return View("CreateEmployee");
+                    }
                 case "Cancel":
                     return RedirectToAction("Index");
             }
