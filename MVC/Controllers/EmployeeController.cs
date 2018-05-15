@@ -32,8 +32,15 @@ namespace MVC.Controllers {
             return View("CreateEmployee");
         }
 
-        public string SaveEmployee(Employee e) {
-            return e.FirstName + "|" + e.LastName + "|" + e.Salary;
+        public ActionResult SaveEmployee(Employee e, string BtnSubmit) {
+            switch (BtnSubmit) {
+                case "Save Employee":
+                    return Content(e.FirstName + "|" + e.LastName + "|" + e.Salary);
+                case "Cancel":
+                    return RedirectToAction("Index");
+            }
+
+            return new EmptyResult();
         }
     }
 }
