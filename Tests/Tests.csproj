@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Facade\Facade.csproj" />
-    <ProjectReference Include="..\Infra\Infra.csproj" />
     <ProjectReference Include="..\MVC\MVC.csproj" />
+    <ProjectReference Include="..\OtherInfra\Infra.csproj" />
   </ItemGroup>
 </Project>
